@@ -72,10 +72,12 @@ start "Building amber CLI"
   crystal deps
   mkdir -p $BUILD_DIR/bin
   crystal build --no-debug -o $BUILD_DIR/bin/amber $BUILD_DIR/lib/amber/src/amber.cr
-  PATH="${PATH}:${BUILD_DIR}/bin"
-  PATH="${PATH}:$BUILD_DIR/lib/amber/bin"
-  cd $BUILD_DIR
 finished
+
+chmod +x $BUILD_DIR/bin/amber
+PATH="${PATH}:${BUILD_DIR}/bin"
+PATH="${PATH}:$BUILD_DIR/lib/amber/bin"
+cd $BUILD_DIR
 
 start "Building src/${shard_name}.cr (auto-detected from shard.yml)"
   AMBER_ENV=production crystal build --release --no-debug src/${shard_name}.cr
