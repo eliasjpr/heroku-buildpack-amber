@@ -67,7 +67,7 @@ cd $BUILD_DIR
 eval $(parse_yaml shard.yml "shard_")
 
 # Download sqlite3
-status "Downloading and sqlite3"
+start "Downloading and sqlite3"
 sqlite3_url="https://s3.amazonaws.com/sqlite3-heroku/sqlite3.tar.gz"
 curl $sqlite3_url -s -o - | tar xzf - -C $BUILD_DIR
 
