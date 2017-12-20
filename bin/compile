@@ -63,7 +63,7 @@ finished
 PATH="${PATH}:${CRYSTAL_DIR}/bin"
 
 # Download sqlite3
-start "Downloading and sqlite3"
+start "Downloading and Installing sqlite3"
   mkdir -p $BUILD_DIR/vendor/sqlite3/bin
   sqlite3_url="https://s3.amazonaws.com/sqlite3-heroku/sqlite3.tar.gz"
   curl $sqlite3_url -s -o - | tar xzf - -C $build_dir
