@@ -72,10 +72,9 @@ start "Downloading and sqlite3"
     curl $sqlite3_url -s -o - | tar xzf - -C $BUILD_DIR
 
     chmod +x $BUILD_DIR/sqlite3
-    mv $BUILD_DIR/sqlite3 $BUILD_DIR/vendor/sqlite3/bin/sqlite3
 
     mkdir -p $BUILD_DIR/.profile.d
-    echo 'PATH=$PATH:$HOME/vendor/sqlite3/bin' > $BUILD_DIR/.profile.d/sqlite3.sh
+    echo 'PATH=$PATH:$HOME/sqlite3/bin' > $BUILD_DIR/.profile.d/sqlite3.sh
 finished
 
 start "Building src/${shard_name}.cr (auto-detected from shard.yml)\n"
