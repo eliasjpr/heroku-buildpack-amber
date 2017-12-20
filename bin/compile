@@ -69,6 +69,7 @@ eval $(parse_yaml shard.yml "shard_")
 start "Building amber CLI"
   crystal deps
   cd $BUILD_DIR/lib/amber
+  sed '68,79d' ./shard.yml
   sed '4d' ./src/amber/cli/commands/database.cr
   crystal deps build amber
   PATH=${PATH}:${BUILD_DIR}/bin/amber
