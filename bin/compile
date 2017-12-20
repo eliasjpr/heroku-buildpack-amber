@@ -67,12 +67,13 @@ cd $BUILD_DIR
 eval $(parse_yaml shard.yml "shard_")
 
 start "Installing Sqlite3"
-  sed '4d' $BUILD_DIR/lib/amber/cli/commands/database.cr
+  
 finalize
 
 start "Building amber CLI"
   crystal deps
   cd $BUILD_DIR/lib/amber
+  sed '4d' cli/commands/database.cr
   crystal deps build amber
   PATH=${PATH}:${BUILD_DIR}/bin/amber
   cd $BUILD_DIR
