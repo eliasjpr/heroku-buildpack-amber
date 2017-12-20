@@ -68,6 +68,7 @@ eval $(parse_yaml shard.yml "shard_")
 start "Building src/${shard_name}.cr (auto-detected from shard.yml)"
   crystal deps
   cd $BUILD_DIR/lib/amber
+  crystal deps
   make install
   PATH="${PATH}:${BUILD_DIR}/bin/amber"
   cd $BUILD_DIR
