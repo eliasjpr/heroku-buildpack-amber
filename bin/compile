@@ -69,6 +69,9 @@ eval $(parse_yaml shard.yml "shard_")
 start "Building amber CLI"
   crystal deps
   cd $BUILD_DIR/lib/amber
+  sed -n "4d" $BUILD_DIR/lib/amber/src/amber/cli/commands/database.cr
+  sed -n "4d" $BUILD_DIR/lib/amber/src/amber/cli/commands/micrate.cr
+  sed -n "68,70d" $BUILD_DIR/lib/amber/shard.yml
   crystal deps
   mkdir -p $BUILD_DIR/bin
   crystal build --no-debug -o $BUILD_DIR/bin/amber $BUILD_DIR/lib/amber/src/amber/cli.cr
