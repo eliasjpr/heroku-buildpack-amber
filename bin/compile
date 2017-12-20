@@ -65,8 +65,10 @@ PATH="${PATH}:${CRYSTAL_DIR}/bin"
 # Build the Amber project
 cd $BUILD_DIR
 eval $(parse_yaml shard.yml "shard_")
+cd $BUILD_DIR/lib/amber
+make
+cd $BUILD_DIR
 start "Building src/${shard_name}.cr (auto-detected from shard.yml)"
-  crystal deps build amber
   AMBER_ENV=production crystal deps build --production --no-debug ${shard_name}
 finished
 
