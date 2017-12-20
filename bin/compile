@@ -74,14 +74,14 @@ start "Downloading and sqlite3"
     chmod +x $BUILD_DIR/sqlite3
 
     mkdir -p $BUILD_DIR/.profile.d
-    echo 'PATH=$PATH:$HOME/sqlite3/bin' > $BUILD_DIR/.profile.d/sqlite3.sh
+    PATH=$PATH:$HOME/sqlite3/bin
 finished
 
 start "Building src/${shard_name}.cr (auto-detected from shard.yml)\n"
   crystal deps
   cd $BUILD_DIR/lib/amber
   crystal deps build amber
-  echo 'PATH=${PATH}:${BUILD_DIR}/bin/amber' > $BUILD_DIR/.profile.d/amber
+  PATH=${PATH}:${BUILD_DIR}/bin/amber
   cd $BUILD_DIR
   AMBER_ENV=production crystal deps build --production --no-debug ${shard_name}
 finished
