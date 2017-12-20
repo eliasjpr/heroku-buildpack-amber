@@ -77,7 +77,7 @@ start "Building amber CLI"
 finished
 
 start "Building src/${shard_name}.cr (auto-detected from shard.yml)"
-  AMBER_ENV=production crystal build --production --no-debug ${shard_name}
+  AMBER_ENV=production crystal build --release --no-debug ${shard_name}
 finished
 
 # Export shard_name to be used by release script
