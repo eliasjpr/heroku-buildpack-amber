@@ -66,8 +66,11 @@ PATH="${PATH}:${CRYSTAL_DIR}/bin"
 cd $BUILD_DIR
 eval $(parse_yaml shard.yml "shard_")
 start "Building src/${shard_name}.cr (auto-detected from shard.yml)"
+  shards install
+  cd $BUILD_DIR/lib/amber
   make install
   PATH="${PATH}:${BUILD_DIR}/bin/amber"
+  cd $BUILD_DIR
   AMBER_ENV=production crystal deps build --production --no-debug ${shard_name}
 finished
 
