@@ -66,10 +66,6 @@ PATH="${PATH}:${CRYSTAL_DIR}/bin"
 cd $BUILD_DIR
 eval $(parse_yaml shard.yml "shard_")
 
-start "Installing Sqlite3"
-  
-finalize
-
 start "Building amber CLI"
   crystal deps
   cd $BUILD_DIR/lib/amber
