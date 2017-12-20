@@ -66,6 +66,24 @@ PATH="${PATH}:${CRYSTAL_DIR}/bin"
 cd $BUILD_DIR
 eval $(parse_yaml shard.yml "shard_")
 
+start "Installing Sqlite3"
+  OUT_PREFIX=$1
+  SOURCE_TARBALL='https://www.sqlite.org/sqlite-autoconf-3070900.tar.gz'
+
+  curl $SOURCE_TARBALL | tar xz
+  # jx
+  mv sqlite-autoconf-3070900 sqlite
+
+  cd sqlite
+  ./configure --prefix=$OUT_PREFIX
+  make
+  make install
+
+  # Cleanup
+  cd ..
+  rm -fr sqlite
+finalize
+
 start "Building amber CLI"
   crystal deps
   cd $BUILD_DIR/lib/amber
