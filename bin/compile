@@ -73,6 +73,10 @@ start "Downloading and Installing sqlite3"
   echo 'PATH=$PATH:$HOME/vendor/sqlite3/bin' > $BUILD_DIR/.profile.d/sqlite3.sh
 finished
 
+# Build the Amber project
+cd $BUILD_DIR
+eval $(parse_yaml shard.yml "shard_")
+
 start "Building amber CLI"
   crystal deps
   cd $BUILD_DIR/lib/amber
@@ -81,9 +85,6 @@ start "Building amber CLI"
   cd $BUILD_DIR
 finished
 
-# Build the Amber project
-cd $BUILD_DIR
-eval $(parse_yaml shard.yml "shard_")
 start "Building src/${shard_name}.cr (auto-detected from shard.yml)"
   AMBER_ENV=production crystal build --production --no-debug ${shard_name}
 finished
