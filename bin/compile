@@ -64,7 +64,7 @@ PATH="${PATH}:${CRYSTAL_DIR}/bin"
 
 # Download sqlite3
 start "Downloading and Installing sqlite3"
-  pkg-config sqlite3 --libs
+  dpkg -L sqlite3
 finished
 
 # Build the Amber project
