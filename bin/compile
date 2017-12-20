@@ -77,13 +77,17 @@ start "Downloading and sqlite3"
     PATH=$PATH:$HOME/sqlite3/bin
 finished
 
-start "Building src/${shard_name}.cr (auto-detected from shard.yml)\n"
+start "Building amber CLI"
   crystal deps
   cd $BUILD_DIR/lib/amber
   crystal deps build amber
   PATH=${PATH}:${BUILD_DIR}/bin/amber
   cd $BUILD_DIR
-  AMBER_ENV=production crystal deps build --production --no-debug ${shard_name}
+finished
+
+
+start "Building src/${shard_name}.cr (auto-detected from shard.yml)"
+  AMBER_ENV=production crystal build --production --no-debug ${shard_name}
 finished
 
 # Export shard_name to be used by release script
