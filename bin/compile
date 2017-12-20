@@ -70,8 +70,8 @@ start "Building amber CLI"
   crystal deps
   cd $BUILD_DIR/lib/amber
   crystal deps
-  mkdir -p bin
-  crystal build --no-debug -o ./bin/amber $BUILD_DIR/lib/amber/src/amber.cr
+  mkdir -p $BUILD_DIR/bin
+  crystal build --no-debug -o $BUILD_DIR/bin/amber $BUILD_DIR/lib/amber/src/amber.cr
   PATH="${PATH}:${BUILD_DIR}/bin"
   cd $BUILD_DIR
 finished
